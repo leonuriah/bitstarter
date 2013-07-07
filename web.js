@@ -3,11 +3,11 @@ var fs = require('fs');
 
 var app = express.createServer(express.logger());
 
-var txt = fs.readFileSync('index.html');
+var txt = new Buffer(fs.readFileSync('index.html'));
 
 app.get('/', function(request, response) {
   //response.send('Hello World 2!');
-  response.send(txt);
+  response.send(txt.toString('utf-8'));
 
 });
 
